@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChallengeTwoProgram
+namespace ChallengeThreeProgram
 {
-    class ChallengeTwoProgram
+    class ChallengeThreeProgram
     {
         static void Main(string[] args)
         {
-            ChallengeTwoProgramUI program = new ChallengeTwoProgramUI();
+            ChallengeThreeProgramUI program = new ChallengeThreeProgramUI();
             program.Run();
         }
     }

@@ -18,7 +18,7 @@ namespace ChallengeTwoRepository
         public ClaimType Type { get; set; }
         public string Description { get; set; }
         public double Amount { get; set; }
-        public DateTime DateOfIncident { get; set; }
+        public DateTime DateOfAccident { get; set; }
         public DateTime DateOfClaim { get; set; }
         public bool IsValid { get; set; }
 
@@ -30,7 +30,7 @@ namespace ChallengeTwoRepository
             Type = type;
             Description = description;
             Amount = amount;
-            DateOfIncident = dateOfIncident;
+            DateOfAccident = dateOfIncident;
             DateOfClaim = dateOfClaim;
             IsValid = isValid;
         }
