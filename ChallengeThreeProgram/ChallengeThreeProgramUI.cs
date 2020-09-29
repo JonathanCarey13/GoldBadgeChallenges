@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,20 +70,54 @@ namespace ChallengeThreeProgram
             newBadge.BadgeID = BadgeIDAsInt;
 
             Console.WriteLine("Enter a door the badge needs access to:");
-            string badgeDoor = Console.ReadLine();
-            List<string> = badgeDoor;
+            newBadge.Doors = new List<string>();
+            string newDoor = Console.ReadLine();
+            newBadge.Doors.Add(newDoor);
 
+            bool doorLoop = true;
 
-            
+            while (doorLoop)
+            {   
+                Console.WriteLine("Do you want to add another door? Y/N ");
+                newDoor = Console.ReadLine().ToLower();
+                Console.Clear();
+                if (newDoor == "y")
+                {
+                    Console.WriteLine("Enter a door the badge needs access to:");
+                    newBadge.Doors.Add(Console.ReadLine());
+                }
+                else if (newDoor == "n")
+                {
+                    doorLoop = false;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter Y or N");
+                    Console.ReadKey();
+                }
+            }
+
+            Console.Clear();
+            Console.WriteLine("Enter the badge name: ");
+            newBadge.BadgeName = Console.ReadLine();
+
+            badges.AddNewBadge(newBadge);
         }
 
         public void EditBadge()
         {
+            Console.Clear();
+
+
+
 
         }
 
         public void ListBadges()
         {
+            Console.Clear();
+
+
 
         }
     }

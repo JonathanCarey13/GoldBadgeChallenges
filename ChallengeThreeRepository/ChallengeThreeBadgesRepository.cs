@@ -8,8 +8,7 @@ namespace ChallengeThreeRepository
 {
     public class ChallengeThreeBadgesRepository
     {
-
-
+        
         public Dictionary<int, ChallengeThreeBadgesProperties> badges = new Dictionary<int, ChallengeThreeBadgesProperties>
         {
             {1001, A1 },
@@ -38,10 +37,10 @@ namespace ChallengeThreeRepository
             new List<string> {  "A1", "A2", "B1", "C1",},
             "C Badge"
             );
-        
+
         public void AddNewBadge()
         {
-            
+            badges.Add(newBadge);
         }
     }
 }
