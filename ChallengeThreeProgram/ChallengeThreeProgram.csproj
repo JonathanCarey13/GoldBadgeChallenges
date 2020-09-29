@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3EF95500-BAD5-4A1E-AB00-F84063637B1D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChallengeOneMenuRepository</RootNamespace>
-    <AssemblyName>ChallengeOneMenuRepository</AssemblyName>
+    <ProjectGuid>{1572F908-2102-4013-B268-C9B569A61E86}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ChallengeThreeProgram</RootNamespace>
+    <AssemblyName>ChallengeThreeProgram</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,14 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChallengeOneMenuProperties.cs" />
-    <Compile Include="ChallengeOneRepository.cs" />
+    <Compile Include="ChallengeThreeProgram.cs" />
+    <Compile Include="ChallengeThreeProgramUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChallengeOneTests\ChallengeOneTests.csproj">
-      <Project>{07b02d1e-041f-4feb-830e-ba0e80a2a376}</Project>
-      <Name>ChallengeOneTests</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChallengeThreeRepository\ChallengeThreeRepository.csproj">
+      <Project>{a0c0c3b1-c541-4da4-bdf2-ac479e54b877}</Project>
+      <Name>ChallengeThreeRepository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

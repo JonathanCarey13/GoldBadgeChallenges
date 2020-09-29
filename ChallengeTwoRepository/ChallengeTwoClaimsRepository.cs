@@ -9,21 +9,16 @@ namespace ChallengeTwoRepository
 {
     public class ChallengeTwoClaimsRepository
     {
-        private List<ChallengeTwoClaimsProperties> claims = new List<ChallengeTwoClaimsProperties>();
+        private Queue<ChallengeTwoClaimsProperties> claims = new Queue<ChallengeTwoClaimsProperties>();
 
         public void AddNewClaim(ChallengeTwoClaimsProperties claim)
         {
-            claims.Add(claim);
+            claims.Enqueue(claim);
         }
 
-        public List<ChallengeTwoClaimsProperties> ShowCurrentClaims()
+        public Queue<ChallengeTwoClaimsProperties> ShowCurrentClaims()
         {
             return claims;
-        }
-
-        public List<ChallengeTwoClaimsProperties> SeeNextClaim()
-        {
-            return claims[0];
         }
     }
 }
