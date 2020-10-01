@@ -14,10 +14,11 @@ namespace ChallengeThreeProgram
 
         public void Run()
         {
+            _badges.SeedBadges();
             Menu();
         }
 
-        private ChallengeThreeBadgesRepository badges = new ChallengeThreeBadgesRepository();
+        private ChallengeThreeBadgesRepository _badges = new ChallengeThreeBadgesRepository();
 
         private void Menu()
         {
@@ -59,7 +60,7 @@ namespace ChallengeThreeProgram
             }
         }
         
-        public void AddBadge()
+        private void AddBadge()
         {
             Console.Clear();
             ChallengeThreeBadgesProperties newBadge = new ChallengeThreeBadgesProperties();
@@ -101,23 +102,31 @@ namespace ChallengeThreeProgram
             Console.WriteLine("Enter the badge name: ");
             newBadge.BadgeName = Console.ReadLine();
 
-            badges.AddNewBadge(newBadge);
+            _badges.AddNewBadge(newBadge);
         }
 
-        public void EditBadge()
+        private void EditBadge()
         {
             Console.Clear();
-
-
-
-
         }
 
-        public void ListBadges()
+        private void ListBadges()
         {
             Console.Clear();
+            ChallengeThreeBadgesProperties badgeList = _badges.ShowAllBadges()
+            
 
+            foreach (KeyValuePair<int, ChallengeThreeBadgesProperties> badge in badgeList)
+            {
+                Console.WriteLine($"BadgeID: {badge.Value.BadgeID}\n" +
+                    $"Badge Name: {badge.Value.BadgeName}\n" +
 
+                    foreach (KeyValuePair<int, ChallengeThreeBadgesProperties> badgeValue in badge.Value.Doors)
+                    {
+                        Console.WriteLine($"Badge Door Access: {badgeValue}\n\n\n"); 
+                    }
+                    );
+            }
 
         }
     }
