@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ChallengeThreeProgram
 {
@@ -59,11 +61,11 @@ namespace ChallengeThreeProgram
                 Console.Clear();
             }
         }
-        
+
         private void AddBadge()
         {
             Console.Clear();
-            ChallengeThreeBadgesProperties newBadge = new ChallengeThreeBadgesProperties();
+            Badge newBadge = new Badge();
 
             Console.WriteLine("Enter the new badge ID number:");
             string badgeIDAsString = Console.ReadLine();
@@ -78,7 +80,7 @@ namespace ChallengeThreeProgram
             bool doorLoop = true;
 
             while (doorLoop)
-            {   
+            {
                 Console.WriteLine("Do you want to add another door? Y/N ");
                 newDoor = Console.ReadLine().ToLower();
                 Console.Clear();
@@ -105,30 +107,87 @@ namespace ChallengeThreeProgram
             _badges.AddNewBadge(newBadge);
         }
 
-        private void EditBadge()
-        {
-            Console.Clear();
-        }
-
         private void ListBadges()
         {
             Console.Clear();
-            ChallengeThreeBadgesProperties badgeList = _badges.ShowAllBadges()
-            
+            List<Badge> badges = _badges.GetAllBadges();
 
-            foreach (KeyValuePair<int, ChallengeThreeBadgesProperties> badge in badgeList)
+            foreach (Badge item in badges)
             {
-                Console.WriteLine($"BadgeID: {badge.Value.BadgeID}\n" +
-                    $"Badge Name: {badge.Value.BadgeName}\n" +
+                if (item != null)
+                {
+                    string joined = string.Join(",", item.Doors);
+                    string.Join(", ", badges);
+                    Console.WriteLine($"Badge ID:{item.BadgeID}\n" +
+                        $"Badge Access Door(s):{joined}\n" +
+                        $"Badge Name:{item.BadgeName}\n\n");
+                }
+                //foreach (KeyValuePair<int, ChallengeThreeBadgesProperties> badge in badges)
+                //{
+                //    Console.WriteLine($"BadgeID: {badge.Value.BadgeID}\n" +
+                //        $"Badge Name: {badge.Value.BadgeName}\n");
 
-                    foreach (KeyValuePair<int, ChallengeThreeBadgesProperties> badgeValue in badge.Value.Doors)
-                    {
-                        Console.WriteLine($"Badge Door Access: {badgeValue}\n\n\n"); 
-                    }
-                    );
+                //    foreach (KeyValuePair<int, ChallengeThreeBadgesProperties> badgeValue in badges)
+                //    {
+                //        Console.WriteLine($"Badge Door Access: {badgeValue.Value.Doors}");
+
+                //        //foreach(int badgeNum in badges.Keys)
+                //        //{
+                //        //    string doorName = string.Join(",", badges[badgeNum]);
+                //        //    Console.WriteLine($"{badgeNum}");
+                //        //}
+                //    }
+                //    Console.WriteLine("\n");
+                //}
             }
-
+                Console.ReadKey();
         }
+        private void EditBadge()
+        {
+            Console.Clear();
+
+            Badge newBadge = new Badge();
+
+            Console.WriteLine("Which badge ID would you like to update? ");
+            string input = Console.ReadLine();
+            if(input.Contains($"{newBadge.BadgeID}")) 
+            {
+                Console.WriteLine("What would you like to do?\n" +
+                    "1. Remove a door\n" +
+                    "2. Add a door");
+
+                string secondInput = Console.ReadLine().ToLower();
+                switch (secondInput)
+                {
+                    case "1":
+                        Console.Clear();
+                        Console.WriteLine("Which door would you like to remove:");
+                        string requestedDoor = Console.ReadLine();
+                        if (requestedDoor == $"{newBadge.Doors}")
+                        {
+                            _badges.RemoveBadge();
+                        }
+
+
+                        break;
+                    case "2":
+                        Console.Clear();
+                        Console.WriteLine("Enter a door the badge needs access to:");
+                        newBadge.Doors = new List<string>();
+                        string newDoor = Console.ReadLine();
+                        newBadge.Doors.Add(newDoor);
+                        Console.Clear();
+                        Console.WriteLine($"{newBadge.BadgeID} now has access to door: {newBadge.Doors}.");
+                        Console.ReadKey();
+                        break;
+                    default:
+                        Console.WriteLine("Please enter 1 or 2");
+                        break;
+                }
+
+            }
+        }
+
     }
 }
 

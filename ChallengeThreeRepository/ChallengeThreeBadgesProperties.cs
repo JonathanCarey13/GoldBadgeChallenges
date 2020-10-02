@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace ChallengeThreeRepository
 {
-    public class ChallengeThreeBadgesProperties
+    public class Badge
     {
         public int BadgeID { get; set; }
         public List<string> Doors { get; set; } /*= new List<string>();  This is one example of creating a default for an instance of this list*/
         public string BadgeName { get; set; }
 
-        public ChallengeThreeBadgesProperties() { }
+        public Badge() { }
 
-        public ChallengeThreeBadgesProperties(int badgeID, List<string> doors, string badgeName)
+        public Badge(int badgeID, List<string> doors, string badgeName)
         {
             BadgeID = badgeID;
             Doors = doors;
