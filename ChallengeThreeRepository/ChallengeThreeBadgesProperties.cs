@@ -10,7 +10,7 @@ namespace ChallengeThreeRepository
     public class Badge
     {
         public int BadgeID { get; set; }
-        public List<string> Doors { get; set; } /*= new List<string>();  This is one example of creating a default for an instance of this list*/
+        public List<string> Doors { get; set; } //= new List<string>();  This is one example of creating a default for an instance of this list*/
         public string BadgeName { get; set; }
 
         public Badge() { }

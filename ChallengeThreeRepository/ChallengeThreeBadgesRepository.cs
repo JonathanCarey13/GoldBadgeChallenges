@@ -21,14 +21,15 @@ namespace ChallengeThreeRepository
         {
             badges.Add(newBadge.BadgeID, newBadge);  //come back to this and explore around with this
         }
-        public List<Badge> GetAllBadges()
+        public List<Badge> GetBadgeValues()
         {
             var items = badges.Values.ToList();
             return items;
         }
         public bool DeleteBadge(int ID)
         {
-            Badge badge = GetBadgeByID(ID);
+            
+            Badge badge = GetBadgeID(ID);
             int initialCount = badge.Doors.Count;
             if (badge.BadgeID == ID)
             {
@@ -47,32 +48,22 @@ namespace ChallengeThreeRepository
                 return false;
             }
         }
-
-        public List<Badge> GetBadgeID()
-        {
-            int iD = badges.Keys.ToList();
-            return iD;
-        }
-
-        //public bool RemoveBadge(Badge badge)
+        //public List<int> GetBadgeKeys()
         //{
-        //    List<Badge> badgeValueList = badges.Values.ToList();
-
-        //    if (badge == null)
-        //    {
-        //        return false;
-        //    }
-        //    int initialCount = badges.Count;
-
-        //    if (initialCount > badges.Count)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
+        //    List<int> key = badges.Keys.ToList();
+        //    return key;
         //}
-
+        //This method grabs
+        public Badge GetBadgeID(int badgeID)
+        {
+            foreach (KeyValuePair<int, Badge> badge in badges)
+            {
+                if (badge.Key == badgeID)
+                {
+                    return badge.Value;
+                }
+            }
+            return null;
+        }
     }
 }

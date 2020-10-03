@@ -31,12 +31,12 @@ namespace ChallengeTwoRepositoryTest
             Assert.AreEqual(dateOfClaim, testClaim.DateOfClaim);
             Assert.AreEqual(isValid, testClaim.IsValid);
         }
-
+        [TestMethod]
         public void AddNewClaim(ChallengeTwoClaimsProperties claim)
         {
             claims.Enqueue(claim);
         }
-
+        [TestMethod]
         public Queue<ChallengeTwoClaimsProperties> ShowCurrentClaims()
         {
             return claims;

@@ -56,13 +56,11 @@ namespace ChallengeThreeProgram
                         Console.WriteLine("Please enter a valid number.");
                         break;
                 }
-
                 Console.WriteLine("Please press any key to continue...");
                 Console.ReadKey();
                 Console.Clear();
             }
         }
-
         private void AddBadge()
         {
             Console.Clear();
@@ -111,7 +109,7 @@ namespace ChallengeThreeProgram
         private void ListBadges()
         {
             Console.Clear();
-            List<Badge> badges = _badges.GetAllBadges();
+            List<Badge> badges = _badges.GetBadgeValues();
 
             foreach (Badge item in badges)
             {
@@ -145,18 +143,8 @@ namespace ChallengeThreeProgram
                 {
                     case "1":
                         int badgeID = int.Parse(Console.ReadLine());
-                        Badge badge = _badges.GetAllBadges(badgeID);
+                        Badge badge = _badges.GetBadgeID(badgeID);
                         _badges.DeleteBadge(badgeID);
-                        //Console.Clear();
-                        //Console.WriteLine("Which door would you like to remove:");
-                        //string requestedDoor = Console.ReadLine();
-                        //foreach (Badge badge in badges)
-                        //{
-                        //    if (badge.Doors.Contains(requestedDoor))
-                        //    {
-
-                        //    }
-                        //}
                         break;
                     case "2":
                         Console.Clear();
@@ -175,19 +163,6 @@ namespace ChallengeThreeProgram
 
             }
         }
-        //public List<Badge> GetDoor(Badge badgeDoors)
-        //{
-        //    List<Badge> badgeValues = _badges.GetAllBadges();
-        //    foreach ( Badge badgeDoor in badge)
-        //    {
-        //        if (badgeDoor.Doors == badgeDoors.Doors)
-        //        {
-        //            return badgeDoor;
-        //        }
-        //    }
-        //   return null;
-        //}
-
     }
 }
 
