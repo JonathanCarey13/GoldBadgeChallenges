@@ -31,6 +31,15 @@ namespace ChallengeTwoRepositoryTest
             Assert.AreEqual(dateOfClaim, testClaim.DateOfClaim);
             Assert.AreEqual(isValid, testClaim.IsValid);
         }
-        
+
+        public void AddNewClaim(ChallengeTwoClaimsProperties claim)
+        {
+            claims.Enqueue(claim);
+        }
+
+        public Queue<ChallengeTwoClaimsProperties> ShowCurrentClaims()
+        {
+            return claims;
+        }
     }
 }

@@ -26,18 +26,19 @@ namespace ChallengeThreeRepository
             var items = badges.Values.ToList();
             return items;
         }
-
-        public bool RemoveBadge()
+        public bool DeleteBadge(int ID)
         {
-            List<Badge> badgeDoor = GetAllBadges();
-
-            if (badgeDoor == null)
+            Badge badge = GetBadgeByID(ID);
+            int initialCount = badge.Doors.Count;
+            if (badge.BadgeID == ID)
             {
-                return false;
+                badge.Doors = new List<string>() { };
             }
-            int initialCount = badges.Count;
-
-            if (initialCount > badges.Count)
+            else
+            {
+                Console.WriteLine("There's no badge with that ID.");
+            }
+            if (initialCount > badge.Doors.Count)
             {
                 return true;
             }
@@ -46,16 +47,32 @@ namespace ChallengeThreeRepository
                 return false;
             }
         }
-        public List<Badge> GetDoor(Badge badgeDoor)
+
+        public List<Badge> GetBadgeID()
         {
-            List<Badge> badges = GetAllBadges();
-
-            foreach (List<Badge> badge in badges)
-            {
-                if (badge)
-            }
-
-            return null;
+            int iD = badges.Keys.ToList();
+            return iD;
         }
+
+        //public bool RemoveBadge(Badge badge)
+        //{
+        //    List<Badge> badgeValueList = badges.Values.ToList();
+
+        //    if (badge == null)
+        //    {
+        //        return false;
+        //    }
+        //    int initialCount = badges.Count;
+
+        //    if (initialCount > badges.Count)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+
     }
 }

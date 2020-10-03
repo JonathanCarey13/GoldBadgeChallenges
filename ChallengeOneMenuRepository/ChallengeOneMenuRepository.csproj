@@ -45,11 +45,5 @@
     <Compile Include="ChallengeOneRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ChallengeOneTests\ChallengeOneTests.csproj">
-      <Project>{07b02d1e-041f-4feb-830e-ba0e80a2a376}</Project>
-      <Name>ChallengeOneTests</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

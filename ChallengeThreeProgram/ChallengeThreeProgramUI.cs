@@ -1,5 +1,6 @@
 ﻿using ChallengeThreeRepository;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -122,23 +123,6 @@ namespace ChallengeThreeProgram
                         $"Badge Access Door(s):{joined}\n" +
                         $"Badge Name:{item.BadgeName}\n\n");
                 }
-                //foreach (KeyValuePair<int, ChallengeThreeBadgesProperties> badge in badges)
-                //{
-                //    Console.WriteLine($"BadgeID: {badge.Value.BadgeID}\n" +
-                //        $"Badge Name: {badge.Value.BadgeName}\n");
-
-                //    foreach (KeyValuePair<int, ChallengeThreeBadgesProperties> badgeValue in badges)
-                //    {
-                //        Console.WriteLine($"Badge Door Access: {badgeValue.Value.Doors}");
-
-                //        //foreach(int badgeNum in badges.Keys)
-                //        //{
-                //        //    string doorName = string.Join(",", badges[badgeNum]);
-                //        //    Console.WriteLine($"{badgeNum}");
-                //        //}
-                //    }
-                //    Console.WriteLine("\n");
-                //}
             }
                 Console.ReadKey();
         }
@@ -150,7 +134,7 @@ namespace ChallengeThreeProgram
 
             Console.WriteLine("Which badge ID would you like to update? ");
             string input = Console.ReadLine();
-            if(input.Contains($"{newBadge.BadgeID}")) 
+            if (input.Contains($"{newBadge.BadgeID}"))
             {
                 Console.WriteLine("What would you like to do?\n" +
                     "1. Remove a door\n" +
@@ -160,15 +144,19 @@ namespace ChallengeThreeProgram
                 switch (secondInput)
                 {
                     case "1":
-                        Console.Clear();
-                        Console.WriteLine("Which door would you like to remove:");
-                        string requestedDoor = Console.ReadLine();
-                        if (requestedDoor == $"{newBadge.Doors}")
-                        {
-                            _badges.RemoveBadge();
-                        }
+                        int badgeID = int.Parse(Console.ReadLine());
+                        Badge badge = _badges.GetAllBadges(badgeID);
+                        _badges.DeleteBadge(badgeID);
+                        //Console.Clear();
+                        //Console.WriteLine("Which door would you like to remove:");
+                        //string requestedDoor = Console.ReadLine();
+                        //foreach (Badge badge in badges)
+                        //{
+                        //    if (badge.Doors.Contains(requestedDoor))
+                        //    {
 
-
+                        //    }
+                        //}
                         break;
                     case "2":
                         Console.Clear();
@@ -187,6 +175,18 @@ namespace ChallengeThreeProgram
 
             }
         }
+        //public List<Badge> GetDoor(Badge badgeDoors)
+        //{
+        //    List<Badge> badgeValues = _badges.GetAllBadges();
+        //    foreach ( Badge badgeDoor in badge)
+        //    {
+        //        if (badgeDoor.Doors == badgeDoors.Doors)
+        //        {
+        //            return badgeDoor;
+        //        }
+        //    }
+        //   return null;
+        //}
 
     }
 }
